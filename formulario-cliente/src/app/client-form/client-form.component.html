@@ -1,7 +1,62 @@
-<form action="">
-    <div class="mb-3">
-        <label for="nombres" class="form-label">Nombres</label>
-        <input type="text" name="form-control" id="nombres" placeholder="Ingresa tus nombres">
-    </div>
-    
-</form>
+<div class="container margin-form form-design">
+    <h2 class="text-center text-primary font-weight-bold">Formulario de Registro</h2>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="nombres" class="form-label">Nombres</label>
+            <input type="text" class="form-control" id="nombres" placeholder="Ingresa tus nombres" formControlName="nombres" >
+            <div *ngIf="clientForm.get('nombres')?.touched && clientForm.get('nombres')?.errors?.['required']" class="text-danger">
+                El campo Nombres es obligatorio.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" placeholder="Ingresa tus apellidos" formControlName="apellidos">
+            <div *ngIf="clientForm.get('apellidos')?.touched && clientForm.get('apellidos')?.errors?.['required']" class="text-danger">
+                El campo Apellidos es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="celular" class="form-label">Celular</label>
+            <input type="tel" class="form-control" id="celular" placeholder="Ingresa tu número de celular" formControlName="celular" >
+            <div *ngIf="clientForm.get('celular')?.touched && clientForm.get('celular')?.errors?.['required']" class="text-danger">
+                El campo Celular es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="direccion" class="form-label">Dirección</label>
+            <input type="text" class="form-control" id="direccion" placeholder="Ingresa tu Dirección" formControlName="direccion" >
+            <div *ngIf="clientForm.get('direccion')?.touched && clientForm.get('direccion')?.errors?.['required']" class="text-danger">
+                El campo Dirección es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingresa tu Email" formControlName="email">
+            <div *ngIf="clientForm.get('email')?.touched && clientForm.get('email')?.errors?.['required']" class="text-danger">
+                El campo Email es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="nombreUsuario" class="form-label">Nombre Usuario</label>
+            <input type="text" class="form-control" id="nombreUsuario" placeholder="Elige un nombre de usuario" formControlName="nombreUsuario">
+            <div *ngIf="clientForm.get('nombreUsuario')?.touched && clientForm.get('nombreUsuario')?.errors?.['required']" class="text-danger">
+                El campo Nombre Usuario es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Crea una contraseña" >
+            <div *ngIf="clientForm.get('password')?.touched && clientForm.get('password')?.errors?.['required']" class="text-danger">
+                El campo Contraseña es obligatorio
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+            <input type="password" class="form-control" id="confirmPassword"  formControlName="confirmPassword" placeholder="Ingrese nuevamente la contraseña">
+            <div *ngIf="clientForm.get('confirmPassword')?.touched && clientForm.get('confirmPassword')?.errors?.['required']" class="text-danger">
+                El campo Confirmar contraseña es obligatorio
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
